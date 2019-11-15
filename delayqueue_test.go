@@ -3,6 +3,7 @@ package timingwheel
 import (
 	"container/heap"
 	"fmt"
+	"sync/atomic"
 	"testing"
 )
 
@@ -40,4 +41,12 @@ func Test_newPriorityQueue(t *testing.T) {
 		fmt.Printf("%.2d:%s ", e.priority, e.value)
 	}
 
+}
+
+func TestCompareAndSwapInt32(t *testing.T) {
+
+	var i int32
+
+	atomic.CompareAndSwapInt32(&i,0,1)
+	fmt.Println(i)
 }
